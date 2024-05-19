@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "414418197159",
+    "project_id": "chatbot-2300b",
+    "storage_bucket": "chatbot-2300b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414418197159:android:42cb73dbe482aea5065982",
+        "android_client_info": {
+          "package_name": "com.mycompany.chatbot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0I17EKzzEAzhPA7otrqLPpNF1-B_1uDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
