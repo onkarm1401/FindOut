@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class BillingModel extends FlutterFlowModel<BillingWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for sideNav component.
   late SideNavModel sideNavModel;
   // State field(s) for TabBar widget.
@@ -21,7 +20,6 @@ class BillingModel extends FlutterFlowModel<BillingWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     sideNavModel.dispose();
     tabBarController?.dispose();
   }

@@ -41,6 +41,7 @@ class FlutterFlowCheckboxGroup extends StatefulWidget {
 
 class _FlutterFlowCheckboxGroupState extends State<FlutterFlowCheckboxGroup> {
   late List<String> checkboxValues;
+  late void Function() _selectedValueListener;
   ValueListenable<List<String>?> get changeSelectedValues => widget.controller;
   List<String> get selectedValues => widget.controller.value ?? [];
 
@@ -57,19 +58,20 @@ class _FlutterFlowCheckboxGroupState extends State<FlutterFlowCheckboxGroup> {
         },
       );
     }
-    changeSelectedValues.addListener(() {
+    _selectedValueListener = () {
       if (!listEquals(checkboxValues, selectedValues)) {
         setState(() => checkboxValues = List.from(selectedValues));
       }
       if (widget.onChanged != null) {
         widget.onChanged!(selectedValues);
       }
-    });
+    };
+    changeSelectedValues.addListener(_selectedValueListener);
   }
 
   @override
   void dispose() {
-    changeSelectedValues.removeListener(() {});
+    changeSelectedValues.removeListener(_selectedValueListener);
     super.dispose();
   }
 

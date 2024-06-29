@@ -45,15 +45,40 @@ class ChatHistoryRecord extends FirestoreRecord {
   String get chatUniqueId => _chatUniqueId ?? '';
   bool hasChatUniqueId() => _chatUniqueId != null;
 
-  // "chatMessages" field.
-  List<ContentStruct>? _chatMessages;
-  List<ContentStruct> get chatMessages => _chatMessages ?? const [];
-  bool hasChatMessages() => _chatMessages != null;
-
   // "used_token" field.
   int? _usedToken;
   int get usedToken => _usedToken ?? 0;
   bool hasUsedToken() => _usedToken != null;
+
+  // "business_name" field.
+  String? _businessName;
+  String get businessName => _businessName ?? '';
+  bool hasBusinessName() => _businessName != null;
+
+  // "chat_feedback" field.
+  int? _chatFeedback;
+  int get chatFeedback => _chatFeedback ?? 0;
+  bool hasChatFeedback() => _chatFeedback != null;
+
+  // "message_seen" field.
+  bool? _messageSeen;
+  bool get messageSeen => _messageSeen ?? false;
+  bool hasMessageSeen() => _messageSeen != null;
+
+  // "starred" field.
+  bool? _starred;
+  bool get starred => _starred ?? false;
+  bool hasStarred() => _starred != null;
+
+  // "expert_joined" field.
+  bool? _expertJoined;
+  bool get expertJoined => _expertJoined ?? false;
+  bool hasExpertJoined() => _expertJoined != null;
+
+  // "thread_id" field.
+  String? _threadId;
+  String get threadId => _threadId ?? '';
+  bool hasThreadId() => _threadId != null;
 
   void _initializeFields() {
     _userID = snapshotData['userID'] as String?;
@@ -62,11 +87,13 @@ class ChatHistoryRecord extends FirestoreRecord {
     _visitorEmail = snapshotData['visitor_email'] as String?;
     _visitorPhoneNumber = castToType<int>(snapshotData['visitor_phoneNumber']);
     _chatUniqueId = snapshotData['chatUniqueId'] as String?;
-    _chatMessages = getStructList(
-      snapshotData['chatMessages'],
-      ContentStruct.fromMap,
-    );
     _usedToken = castToType<int>(snapshotData['used_token']);
+    _businessName = snapshotData['business_name'] as String?;
+    _chatFeedback = castToType<int>(snapshotData['chat_feedback']);
+    _messageSeen = snapshotData['message_seen'] as bool?;
+    _starred = snapshotData['starred'] as bool?;
+    _expertJoined = snapshotData['expert_joined'] as bool?;
+    _threadId = snapshotData['thread_id'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -111,6 +138,12 @@ Map<String, dynamic> createChatHistoryRecordData({
   int? visitorPhoneNumber,
   String? chatUniqueId,
   int? usedToken,
+  String? businessName,
+  int? chatFeedback,
+  bool? messageSeen,
+  bool? starred,
+  bool? expertJoined,
+  String? threadId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -121,6 +154,12 @@ Map<String, dynamic> createChatHistoryRecordData({
       'visitor_phoneNumber': visitorPhoneNumber,
       'chatUniqueId': chatUniqueId,
       'used_token': usedToken,
+      'business_name': businessName,
+      'chat_feedback': chatFeedback,
+      'message_seen': messageSeen,
+      'starred': starred,
+      'expert_joined': expertJoined,
+      'thread_id': threadId,
     }.withoutNulls,
   );
 
@@ -132,15 +171,19 @@ class ChatHistoryRecordDocumentEquality implements Equality<ChatHistoryRecord> {
 
   @override
   bool equals(ChatHistoryRecord? e1, ChatHistoryRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.userID == e2?.userID &&
         e1?.chatDate == e2?.chatDate &&
         e1?.visitorName == e2?.visitorName &&
         e1?.visitorEmail == e2?.visitorEmail &&
         e1?.visitorPhoneNumber == e2?.visitorPhoneNumber &&
         e1?.chatUniqueId == e2?.chatUniqueId &&
-        listEquality.equals(e1?.chatMessages, e2?.chatMessages) &&
-        e1?.usedToken == e2?.usedToken;
+        e1?.usedToken == e2?.usedToken &&
+        e1?.businessName == e2?.businessName &&
+        e1?.chatFeedback == e2?.chatFeedback &&
+        e1?.messageSeen == e2?.messageSeen &&
+        e1?.starred == e2?.starred &&
+        e1?.expertJoined == e2?.expertJoined &&
+        e1?.threadId == e2?.threadId;
   }
 
   @override
@@ -151,8 +194,13 @@ class ChatHistoryRecordDocumentEquality implements Equality<ChatHistoryRecord> {
         e?.visitorEmail,
         e?.visitorPhoneNumber,
         e?.chatUniqueId,
-        e?.chatMessages,
-        e?.usedToken
+        e?.usedToken,
+        e?.businessName,
+        e?.chatFeedback,
+        e?.messageSeen,
+        e?.starred,
+        e?.expertJoined,
+        e?.threadId
       ]);
 
   @override

@@ -19,39 +19,67 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="chatBot">
+  <meta name="apple-mobile-web-app-title" content="customized-chatbot">
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <style>
+    /* Center the title */
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Title styles */
+    header {
+      text-align: center;
+      font-size: 32px;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Remove underline from anchor */
+    h1 a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="https://chatbot1401.flutterflow.app">Chatbot</a></h1>
+  </header>
+</body>
+</html>
 
   
 
-  <meta name="robots" content="noindex" />
-
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" href="icons8-react-office-l-120.png" sizes="any"/>
+  
 
   <!-- Open Graph & SEO tags -->
   <meta property="og:title" content="customized chatbot" />
-  <meta property="og:description" content="Built with FlutterFlow." />
-  <meta property="og:image" content="https://storage.googleapis.com/flutterflow-prod-hosting/og_splash_gradient.png" /> 
+  <meta property="og:description" content="Integrate Chatbot in your website and application with without code. Customized UI design. Add knowledge feature. Latest AI model. It enables users to build their chatbot without any coding ..." />
+  <meta property="og:image" content="/assets/assets/images/icons8-react-office-l-120.png" /> 
   <meta name="twitter:title" content="customized chatbot" />
-  <meta name="twitter:description" content="Built with FlutterFlow." />
-  <meta name="twitter:image" content="https://storage.googleapis.com/flutterflow-prod-hosting/og_splash_gradient.png" />
+  <meta name="twitter:description" content="Integrate Chatbot in your website and application with without code. Customized UI design. Add knowledge feature. Latest AI model. It enables users to build their chatbot without any coding ..." />
+  <meta name="twitter:image" content="/assets/assets/images/icons8-react-office-l-120.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <title> customized chatbot </title>
-  <meta name="description" content="Built with FlutterFlow." />
+  <meta name="description" content="Integrate Chatbot in your website and application with without code. Customized UI design. Add knowledge feature. Latest AI model. It enables users to build their chatbot without any coding ..." />
     
 
-  <!-- Status Bar color in Safari browser (iOS) and PWA -->
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1f4f8">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#1d2428">
+  
 
   <link rel="manifest" href="manifest.json">
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+  
+  
 </head>
 <body>
   
@@ -60,22 +88,13 @@
   
   
   <script>
-    window.addEventListener('load', function (ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        entrypointUrl: 'main.dart.js',
-        serviceWorker: {
-          serviceWorkerUrl: 'flutter_service_worker.js?v=',
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: async function(engineInitializer) {
-          // Initialize the Flutter engine
-          let appRunner = await engineInitializer.initializeEngine({});
-          // Run the app
-          await appRunner.runApp();
-        }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=');
       });
-    });
+    }
   </script>
+  <script src="main.dart.js" type="application/javascript"></script>
+
 </body>
 </html>

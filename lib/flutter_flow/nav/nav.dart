@@ -8,6 +8,7 @@ import '/backend/schema/structs/index.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -72,18 +73,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const OverviewWidget() : const LoginWidget(),
+      errorBuilder: (context, state) => RootPageContext.wrap(
+        appStateNotifier.loggedIn ? const OverviewWidget() : const LoginWidget(),
+        errorRoute: state.uri.toString(),
+      ),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const OverviewWidget() : const LoginWidget(),
+          builder: (context, _) => RootPageContext.wrap(
+            appStateNotifier.loggedIn ? const OverviewWidget() : const LoginWidget(),
+          ),
         ),
         FFRoute(
-          name: 'testChatbot',
-          path: '/testChatbot',
+          name: 'test-chatbot',
+          path: '/test-chatbot',
           requireAuth: true,
           builder: (context, params) => const TestChatbotWidget(),
         ),
@@ -106,7 +110,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'new_registration',
-          path: '/newRegistration',
+          path: '/new-registration',
           builder: (context, params) => const NewRegistrationWidget(),
         ),
         FFRoute(
@@ -117,7 +121,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'createAsistent',
-          path: '/createAsistent',
+          path: '/create-asistent',
           requireAuth: true,
           builder: (context, params) => const CreateAsistentWidget(),
         ),
@@ -134,21 +138,124 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const WebsiteDataFetchedWidget(),
         ),
         FFRoute(
-          name: 'ChatbotInstructions',
-          path: '/ChatbotInstructions',
+          name: 'Chatbot-Instructions',
+          path: '/chatbot-Instructions',
           requireAuth: true,
           builder: (context, params) => const ChatbotInstructionsWidget(),
         ),
         FFRoute(
-          name: 'dataSource',
-          path: '/dataSource',
+          name: 'chatbot-integration-with-website',
+          path: '/chatbot-integration-with-website',
+          requireAuth: true,
+          builder: (context, params) => const ChatbotIntegrationWithWebsiteWidget(),
+        ),
+        FFRoute(
+          name: 'admin',
+          path: '/admin',
+          requireAuth: true,
+          builder: (context, params) => const AdminWidget(),
+        ),
+        FFRoute(
+          name: 'overview',
+          path: '/overview',
+          requireAuth: true,
+          builder: (context, params) => const OverviewWidget(),
+        ),
+        FFRoute(
+          name: 'designUI',
+          path: '/ui-design',
+          requireAuth: true,
+          builder: (context, params) => const DesignUIWidget(),
+        ),
+        FFRoute(
+          name: 'billing',
+          path: '/billing',
+          requireAuth: true,
+          builder: (context, params) => const BillingWidget(),
+        ),
+        FFRoute(
+          name: 'fetch-data-with-url',
+          path: '/fetch-data-with-url',
+          requireAuth: true,
+          builder: (context, params) => const FetchDataWithUrlWidget(),
+        ),
+        FFRoute(
+          name: 'storage',
+          path: '/storage',
+          requireAuth: true,
+          builder: (context, params) => const StorageWidget(),
+        ),
+        FFRoute(
+          name: 'data-source',
+          path: '/data-source',
           requireAuth: true,
           builder: (context, params) => const DataSourceWidget(),
         ),
         FFRoute(
-          name: 'AI',
-          path: '/ai',
-          builder: (context, params) => AiWidget(
+          name: 'TermsofService',
+          path: '/terms-of-service',
+          builder: (context, params) => const TermsofServiceWidget(),
+        ),
+        FFRoute(
+          name: 'Privacypolicy',
+          path: '/privacy-policy',
+          builder: (context, params) => const PrivacypolicyWidget(),
+        ),
+        FFRoute(
+          name: 'verification-link',
+          path: '/email-verification',
+          builder: (context, params) => const VerificationLinkWidget(),
+        ),
+        FFRoute(
+          name: 'pricing-model',
+          path: '/pricing-model',
+          requireAuth: true,
+          builder: (context, params) => const PricingModelWidget(),
+        ),
+        FFRoute(
+          name: 'Troubleshooting',
+          path: '/Troubleshooting',
+          requireAuth: true,
+          builder: (context, params) => const TroubleshootingWidget(),
+        ),
+        FFRoute(
+          name: 'track-visitor',
+          path: '/track-visitor',
+          requireAuth: true,
+          builder: (context, params) => const TrackVisitorWidget(),
+        ),
+        FFRoute(
+          name: 'enable-user-to-report-problem',
+          path: '/enable-user-to-report-problem',
+          requireAuth: true,
+          builder: (context, params) => const EnableUserToReportProblemWidget(),
+        ),
+        FFRoute(
+          name: 'data-source-new',
+          path: '/data-source-new',
+          requireAuth: true,
+          builder: (context, params) => const DataSourceNewWidget(),
+        ),
+        FFRoute(
+          name: 'reset-password-link',
+          path: '/reset-password-link',
+          builder: (context, params) => const ResetPasswordLinkWidget(),
+        ),
+        FFRoute(
+          name: 'websiteLandingPage',
+          path: '/websiteLandingPage',
+          builder: (context, params) => const WebsiteLandingPageWidget(),
+        ),
+        FFRoute(
+          name: 'live-chat',
+          path: '/live-chat',
+          requireAuth: true,
+          builder: (context, params) => const LiveChatWidget(),
+        ),
+        FFRoute(
+          name: 'real-time-new',
+          path: '/real-time-new',
+          builder: (context, params) => RealTimeNewWidget(
             id: params.getParam(
               'id',
               ParamType.DocumentReference,
@@ -158,52 +265,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'IntegrationWithWebsite',
-          path: '/integrationWithWebsite',
-          requireAuth: true,
-          builder: (context, params) => const IntegrationWithWebsiteWidget(),
-        ),
-        FFRoute(
-          name: 'admin',
-          path: '/admin',
-          requireAuth: true,
-          builder: (context, params) => const AdminWidget(),
-        ),
-        FFRoute(
-          name: 'Overview',
-          path: '/overview',
-          requireAuth: true,
-          builder: (context, params) => const OverviewWidget(),
-        ),
-        FFRoute(
-          name: 'designUI',
-          path: '/designUI',
-          requireAuth: true,
-          builder: (context, params) => const DesignUIWidget(),
-        ),
-        FFRoute(
-          name: 'chatHistory',
-          path: '/chatHistory',
-          requireAuth: true,
-          builder: (context, params) => const ChatHistoryWidget(),
-        ),
-        FFRoute(
-          name: 'billing',
-          path: '/billing',
-          requireAuth: true,
-          builder: (context, params) => const BillingWidget(),
-        ),
-        FFRoute(
-          name: 'FetchData',
-          path: '/fetchData',
-          requireAuth: true,
-          builder: (context, params) => const FetchDataWidget(),
-        ),
-        FFRoute(
-          name: 'storage',
-          path: '/storage',
-          requireAuth: true,
-          builder: (context, params) => const StorageWidget(),
+          name: 'create_user_profile',
+          path: '/createUserProfile',
+          builder: (context, params) => const CreateUserProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -390,11 +454,15 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: Colors.transparent,
-                  child: Image.asset(
-                    'assets/images/Screenshot_2024-05-15_101751.png',
-                    fit: BoxFit.cover,
+              ? Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
+                    ),
                   ),
                 )
               : page;

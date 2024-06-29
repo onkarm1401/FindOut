@@ -1,0 +1,30 @@
+// Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom action code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'dart:js' as js;
+
+Future<void> clearBrowserDataAndReloadPage() async {
+  // Clear cookies
+  js.context.callMethod('eval', ['document.cookie = ""']);
+
+  // Clear cache
+  js.context.callMethod('eval', [
+    'window.caches.keys().then(keys => keys.forEach(key => window.caches.delete(key)))'
+  ]);
+
+  // Clear IndexedDB
+  js.context.callMethod('eval', [
+    'indexedDB.databases().then(dbs => { dbs.forEach(db => indexedDB.deleteDatabase(db.name)); })'
+  ]);
+
+  // Reload page
+  //js.context.callMethod('eval', ['window.location.reload();']);
+}

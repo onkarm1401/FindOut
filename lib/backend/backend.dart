@@ -6,10 +6,10 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
 import 'schema/user_table_record.dart';
-import 'schema/chatbot_perfomance_record.dart';
 import 'schema/chat_history_record.dart';
 import 'schema/storage_usages_record.dart';
 import 'schema/reported_issue_record.dart';
+import 'schema/messages_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -19,10 +19,10 @@ export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
 export 'schema/user_table_record.dart';
-export 'schema/chatbot_perfomance_record.dart';
 export 'schema/chat_history_record.dart';
 export 'schema/storage_usages_record.dart';
 export 'schema/reported_issue_record.dart';
+export 'schema/messages_record.dart';
 
 /// Functions to query UserTableRecords (as a Stream and as a Future).
 Future<int> queryUserTableRecordCount({
@@ -56,43 +56,6 @@ Future<List<UserTableRecord>> queryUserTableRecordOnce({
     queryCollectionOnce(
       UserTableRecord.collection,
       UserTableRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query ChatbotPerfomanceRecords (as a Stream and as a Future).
-Future<int> queryChatbotPerfomanceRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      ChatbotPerfomanceRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<ChatbotPerfomanceRecord>> queryChatbotPerfomanceRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      ChatbotPerfomanceRecord.collection,
-      ChatbotPerfomanceRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<ChatbotPerfomanceRecord>> queryChatbotPerfomanceRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      ChatbotPerfomanceRecord.collection,
-      ChatbotPerfomanceRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
@@ -204,6 +167,43 @@ Future<List<ReportedIssueRecord>> queryReportedIssueRecordOnce({
     queryCollectionOnce(
       ReportedIssueRecord.collection,
       ReportedIssueRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query MessagesRecords (as a Stream and as a Future).
+Future<int> queryMessagesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      MessagesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<MessagesRecord>> queryMessagesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MessagesRecord.collection,
+      MessagesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MessagesRecord>> queryMessagesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MessagesRecord.collection,
+      MessagesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

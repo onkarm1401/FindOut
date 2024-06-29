@@ -40,11 +40,6 @@ class UserTableRecord extends FirestoreRecord {
   DateTime? get createdTime => _createdTime;
   bool hasCreatedTime() => _createdTime != null;
 
-  // "user_name" field.
-  String? _userName;
-  String get userName => _userName ?? '';
-  bool hasUserName() => _userName != null;
-
   // "phone_number" field.
   String? _phoneNumber;
   String get phoneNumber => _phoneNumber ?? '';
@@ -110,11 +105,6 @@ class UserTableRecord extends FirestoreRecord {
   String? _chatbotInstruction;
   String get chatbotInstruction => _chatbotInstruction ?? '';
   bool hasChatbotInstruction() => _chatbotInstruction != null;
-
-  // "chatbot_model" field.
-  List<String>? _chatbotModel;
-  List<String> get chatbotModel => _chatbotModel ?? const [];
-  bool hasChatbotModel() => _chatbotModel != null;
 
   // "company" field.
   String? _company;
@@ -239,13 +229,122 @@ class UserTableRecord extends FirestoreRecord {
   List<String> get expectedQuestions => _expectedQuestions ?? const [];
   bool hasExpectedQuestions() => _expectedQuestions != null;
 
+  // "instruction_last_upadated_date" field.
+  DateTime? _instructionLastUpadatedDate;
+  DateTime? get instructionLastUpadatedDate => _instructionLastUpadatedDate;
+  bool hasInstructionLastUpadatedDate() => _instructionLastUpadatedDate != null;
+
+  // "Company_logo" field.
+  String? _companyLogo;
+  String get companyLogo => _companyLogo ?? '';
+  bool hasCompanyLogo() => _companyLogo != null;
+
+  // "plan_expiry_date" field.
+  DateTime? _planExpiryDate;
+  DateTime? get planExpiryDate => _planExpiryDate;
+  bool hasPlanExpiryDate() => _planExpiryDate != null;
+
+  // "chat_limit" field.
+  int? _chatLimit;
+  int get chatLimit => _chatLimit ?? 0;
+  bool hasChatLimit() => _chatLimit != null;
+
+  // "char_limit" field.
+  int? _charLimit;
+  int get charLimit => _charLimit ?? 0;
+  bool hasCharLimit() => _charLimit != null;
+
+  // "plan_activiated_date" field.
+  DateTime? _planActiviatedDate;
+  DateTime? get planActiviatedDate => _planActiviatedDate;
+  bool hasPlanActiviatedDate() => _planActiviatedDate != null;
+
+  // "plan_type" field.
+  String? _planType;
+  String get planType => _planType ?? '';
+  bool hasPlanType() => _planType != null;
+
+  // "qa_preference" field.
+  String? _qaPreference;
+  String get qaPreference => _qaPreference ?? '';
+  bool hasQaPreference() => _qaPreference != null;
+
+  // "collect_user_data_business_name" field.
+  bool? _collectUserDataBusinessName;
+  bool get collectUserDataBusinessName => _collectUserDataBusinessName ?? false;
+  bool hasCollectUserDataBusinessName() => _collectUserDataBusinessName != null;
+
+  // "collect_user_data_email" field.
+  bool? _collectUserDataEmail;
+  bool get collectUserDataEmail => _collectUserDataEmail ?? false;
+  bool hasCollectUserDataEmail() => _collectUserDataEmail != null;
+
+  // "collect_user_data_phone_number" field.
+  bool? _collectUserDataPhoneNumber;
+  bool get collectUserDataPhoneNumber => _collectUserDataPhoneNumber ?? false;
+  bool hasCollectUserDataPhoneNumber() => _collectUserDataPhoneNumber != null;
+
+  // "collect_user_data_username" field.
+  bool? _collectUserDataUsername;
+  bool get collectUserDataUsername => _collectUserDataUsername ?? false;
+  bool hasCollectUserDataUsername() => _collectUserDataUsername != null;
+
+  // "collect_user_report_problem" field.
+  bool? _collectUserReportProblem;
+  bool get collectUserReportProblem => _collectUserReportProblem ?? false;
+  bool hasCollectUserReportProblem() => _collectUserReportProblem != null;
+
+  // "logs" field.
+  List<String>? _logs;
+  List<String> get logs => _logs ?? const [];
+  bool hasLogs() => _logs != null;
+
+  // "internal_error_log" field.
+  List<String>? _internalErrorLog;
+  List<String> get internalErrorLog => _internalErrorLog ?? const [];
+  bool hasInternalErrorLog() => _internalErrorLog != null;
+
+  // "support_email_id" field.
+  String? _supportEmailId;
+  String get supportEmailId => _supportEmailId ?? '';
+  bool hasSupportEmailId() => _supportEmailId != null;
+
+  // "message_broder_radius_1" field.
+  int? _messageBroderRadius1;
+  int get messageBroderRadius1 => _messageBroderRadius1 ?? 0;
+  bool hasMessageBroderRadius1() => _messageBroderRadius1 != null;
+
+  // "message_broder_radius_2" field.
+  int? _messageBroderRadius2;
+  int get messageBroderRadius2 => _messageBroderRadius2 ?? 0;
+  bool hasMessageBroderRadius2() => _messageBroderRadius2 != null;
+
+  // "message_broder_radius_3" field.
+  int? _messageBroderRadius3;
+  int get messageBroderRadius3 => _messageBroderRadius3 ?? 0;
+  bool hasMessageBroderRadius3() => _messageBroderRadius3 != null;
+
+  // "message_broder_radius_4" field.
+  int? _messageBroderRadius4;
+  int get messageBroderRadius4 => _messageBroderRadius4 ?? 0;
+  bool hasMessageBroderRadius4() => _messageBroderRadius4 != null;
+
+  // "asistent_type" field.
+  String? _asistentType;
+  String get asistentType => _asistentType ?? '';
+  bool hasAsistentType() => _asistentType != null;
+
+  // "asistent_reply_message_words" field.
+  String? _asistentReplyMessageWords;
+  String get asistentReplyMessageWords => _asistentReplyMessageWords ?? '';
+  bool hasAsistentReplyMessageWords() => _asistentReplyMessageWords != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
     _photoUrl = snapshotData['photo_url'] as String?;
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
-    _userName = snapshotData['user_name'] as String?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _chatbotDescripation = snapshotData['chatbot_descripation'] as String?;
     _chatbotLogo = snapshotData['chatbot_logo'] as String?;
@@ -262,7 +361,6 @@ class UserTableRecord extends FirestoreRecord {
     _website = snapshotData['website'] as String?;
     _openAIAssistentId = snapshotData['openAI_AssistentId'] as String?;
     _chatbotInstruction = snapshotData['chatbot_instruction'] as String?;
-    _chatbotModel = getDataList(snapshotData['chatbot_model']);
     _company = snapshotData['company'] as String?;
     _vectorStoresId = snapshotData['vector_stores_id'] as String?;
     _uploadedFileName = snapshotData['uploadedFileName'] as String?;
@@ -294,6 +392,38 @@ class UserTableRecord extends FirestoreRecord {
     _usedStorageFile = castToType<double>(snapshotData['used_storage_file']);
     _chatbotName = snapshotData['chatbot_name'] as String?;
     _expectedQuestions = getDataList(snapshotData['expected_questions']);
+    _instructionLastUpadatedDate =
+        snapshotData['instruction_last_upadated_date'] as DateTime?;
+    _companyLogo = snapshotData['Company_logo'] as String?;
+    _planExpiryDate = snapshotData['plan_expiry_date'] as DateTime?;
+    _chatLimit = castToType<int>(snapshotData['chat_limit']);
+    _charLimit = castToType<int>(snapshotData['char_limit']);
+    _planActiviatedDate = snapshotData['plan_activiated_date'] as DateTime?;
+    _planType = snapshotData['plan_type'] as String?;
+    _qaPreference = snapshotData['qa_preference'] as String?;
+    _collectUserDataBusinessName =
+        snapshotData['collect_user_data_business_name'] as bool?;
+    _collectUserDataEmail = snapshotData['collect_user_data_email'] as bool?;
+    _collectUserDataPhoneNumber =
+        snapshotData['collect_user_data_phone_number'] as bool?;
+    _collectUserDataUsername =
+        snapshotData['collect_user_data_username'] as bool?;
+    _collectUserReportProblem =
+        snapshotData['collect_user_report_problem'] as bool?;
+    _logs = getDataList(snapshotData['logs']);
+    _internalErrorLog = getDataList(snapshotData['internal_error_log']);
+    _supportEmailId = snapshotData['support_email_id'] as String?;
+    _messageBroderRadius1 =
+        castToType<int>(snapshotData['message_broder_radius_1']);
+    _messageBroderRadius2 =
+        castToType<int>(snapshotData['message_broder_radius_2']);
+    _messageBroderRadius3 =
+        castToType<int>(snapshotData['message_broder_radius_3']);
+    _messageBroderRadius4 =
+        castToType<int>(snapshotData['message_broder_radius_4']);
+    _asistentType = snapshotData['asistent_type'] as String?;
+    _asistentReplyMessageWords =
+        snapshotData['asistent_reply_message_words'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -336,7 +466,6 @@ Map<String, dynamic> createUserTableRecordData({
   String? photoUrl,
   String? uid,
   DateTime? createdTime,
-  String? userName,
   String? phoneNumber,
   String? chatbotDescripation,
   String? chatbotLogo,
@@ -372,6 +501,26 @@ Map<String, dynamic> createUserTableRecordData({
   int? messagesCount,
   double? usedStorageFile,
   String? chatbotName,
+  DateTime? instructionLastUpadatedDate,
+  String? companyLogo,
+  DateTime? planExpiryDate,
+  int? chatLimit,
+  int? charLimit,
+  DateTime? planActiviatedDate,
+  String? planType,
+  String? qaPreference,
+  bool? collectUserDataBusinessName,
+  bool? collectUserDataEmail,
+  bool? collectUserDataPhoneNumber,
+  bool? collectUserDataUsername,
+  bool? collectUserReportProblem,
+  String? supportEmailId,
+  int? messageBroderRadius1,
+  int? messageBroderRadius2,
+  int? messageBroderRadius3,
+  int? messageBroderRadius4,
+  String? asistentType,
+  String? asistentReplyMessageWords,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -380,7 +529,6 @@ Map<String, dynamic> createUserTableRecordData({
       'photo_url': photoUrl,
       'uid': uid,
       'created_time': createdTime,
-      'user_name': userName,
       'phone_number': phoneNumber,
       'chatbot_descripation': chatbotDescripation,
       'chatbot_logo': chatbotLogo,
@@ -416,6 +564,26 @@ Map<String, dynamic> createUserTableRecordData({
       'messages_count': messagesCount,
       'used_storage_file': usedStorageFile,
       'chatbot_name': chatbotName,
+      'instruction_last_upadated_date': instructionLastUpadatedDate,
+      'Company_logo': companyLogo,
+      'plan_expiry_date': planExpiryDate,
+      'chat_limit': chatLimit,
+      'char_limit': charLimit,
+      'plan_activiated_date': planActiviatedDate,
+      'plan_type': planType,
+      'qa_preference': qaPreference,
+      'collect_user_data_business_name': collectUserDataBusinessName,
+      'collect_user_data_email': collectUserDataEmail,
+      'collect_user_data_phone_number': collectUserDataPhoneNumber,
+      'collect_user_data_username': collectUserDataUsername,
+      'collect_user_report_problem': collectUserReportProblem,
+      'support_email_id': supportEmailId,
+      'message_broder_radius_1': messageBroderRadius1,
+      'message_broder_radius_2': messageBroderRadius2,
+      'message_broder_radius_3': messageBroderRadius3,
+      'message_broder_radius_4': messageBroderRadius4,
+      'asistent_type': asistentType,
+      'asistent_reply_message_words': asistentReplyMessageWords,
     }.withoutNulls,
   );
 
@@ -433,7 +601,6 @@ class UserTableRecordDocumentEquality implements Equality<UserTableRecord> {
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.userName == e2?.userName &&
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.chatbotDescripation == e2?.chatbotDescripation &&
         e1?.chatbotLogo == e2?.chatbotLogo &&
@@ -449,7 +616,6 @@ class UserTableRecordDocumentEquality implements Equality<UserTableRecord> {
         e1?.website == e2?.website &&
         e1?.openAIAssistentId == e2?.openAIAssistentId &&
         e1?.chatbotInstruction == e2?.chatbotInstruction &&
-        listEquality.equals(e1?.chatbotModel, e2?.chatbotModel) &&
         e1?.company == e2?.company &&
         e1?.vectorStoresId == e2?.vectorStoresId &&
         e1?.uploadedFileName == e2?.uploadedFileName &&
@@ -474,7 +640,29 @@ class UserTableRecordDocumentEquality implements Equality<UserTableRecord> {
         e1?.messagesCount == e2?.messagesCount &&
         e1?.usedStorageFile == e2?.usedStorageFile &&
         e1?.chatbotName == e2?.chatbotName &&
-        listEquality.equals(e1?.expectedQuestions, e2?.expectedQuestions);
+        listEquality.equals(e1?.expectedQuestions, e2?.expectedQuestions) &&
+        e1?.instructionLastUpadatedDate == e2?.instructionLastUpadatedDate &&
+        e1?.companyLogo == e2?.companyLogo &&
+        e1?.planExpiryDate == e2?.planExpiryDate &&
+        e1?.chatLimit == e2?.chatLimit &&
+        e1?.charLimit == e2?.charLimit &&
+        e1?.planActiviatedDate == e2?.planActiviatedDate &&
+        e1?.planType == e2?.planType &&
+        e1?.qaPreference == e2?.qaPreference &&
+        e1?.collectUserDataBusinessName == e2?.collectUserDataBusinessName &&
+        e1?.collectUserDataEmail == e2?.collectUserDataEmail &&
+        e1?.collectUserDataPhoneNumber == e2?.collectUserDataPhoneNumber &&
+        e1?.collectUserDataUsername == e2?.collectUserDataUsername &&
+        e1?.collectUserReportProblem == e2?.collectUserReportProblem &&
+        listEquality.equals(e1?.logs, e2?.logs) &&
+        listEquality.equals(e1?.internalErrorLog, e2?.internalErrorLog) &&
+        e1?.supportEmailId == e2?.supportEmailId &&
+        e1?.messageBroderRadius1 == e2?.messageBroderRadius1 &&
+        e1?.messageBroderRadius2 == e2?.messageBroderRadius2 &&
+        e1?.messageBroderRadius3 == e2?.messageBroderRadius3 &&
+        e1?.messageBroderRadius4 == e2?.messageBroderRadius4 &&
+        e1?.asistentType == e2?.asistentType &&
+        e1?.asistentReplyMessageWords == e2?.asistentReplyMessageWords;
   }
 
   @override
@@ -484,7 +672,6 @@ class UserTableRecordDocumentEquality implements Equality<UserTableRecord> {
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
-        e?.userName,
         e?.phoneNumber,
         e?.chatbotDescripation,
         e?.chatbotLogo,
@@ -498,7 +685,6 @@ class UserTableRecordDocumentEquality implements Equality<UserTableRecord> {
         e?.website,
         e?.openAIAssistentId,
         e?.chatbotInstruction,
-        e?.chatbotModel,
         e?.company,
         e?.vectorStoresId,
         e?.uploadedFileName,
@@ -522,7 +708,29 @@ class UserTableRecordDocumentEquality implements Equality<UserTableRecord> {
         e?.messagesCount,
         e?.usedStorageFile,
         e?.chatbotName,
-        e?.expectedQuestions
+        e?.expectedQuestions,
+        e?.instructionLastUpadatedDate,
+        e?.companyLogo,
+        e?.planExpiryDate,
+        e?.chatLimit,
+        e?.charLimit,
+        e?.planActiviatedDate,
+        e?.planType,
+        e?.qaPreference,
+        e?.collectUserDataBusinessName,
+        e?.collectUserDataEmail,
+        e?.collectUserDataPhoneNumber,
+        e?.collectUserDataUsername,
+        e?.collectUserReportProblem,
+        e?.logs,
+        e?.internalErrorLog,
+        e?.supportEmailId,
+        e?.messageBroderRadius1,
+        e?.messageBroderRadius2,
+        e?.messageBroderRadius3,
+        e?.messageBroderRadius4,
+        e?.asistentType,
+        e?.asistentReplyMessageWords
       ]);
 
   @override

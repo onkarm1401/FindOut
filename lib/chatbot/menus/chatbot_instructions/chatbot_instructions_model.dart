@@ -34,22 +34,27 @@ class ChatbotInstructionsModel
   void updateLogsAtIndex(int index, Function(String) updateFn) =>
       logs[index] = updateFn(logs[index]);
 
+  dynamic instruction;
+
+  String? optimizedData;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (getAssistentDetails)] action in Chatbot-Instructions widget.
+  ApiCallResponse? apiResultf03;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
+  // Stores action output result for [Backend Call - API (openAI)] action in Button widget.
+  ApiCallResponse? apiResultkx1;
   // Stores action output result for [Backend Call - API (addFileToAssistent)] action in Button widget.
   ApiCallResponse? updateAsistent;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController;
-  int get tabBarCurrentIndex =>
-      tabBarController != null ? tabBarController!.index : 0;
-
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController1;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
@@ -58,23 +63,19 @@ class ChatbotInstructionsModel
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode4;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode5;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController2;
+  // State field(s) for supportEmailID widget.
+  FocusNode? supportEmailIDFocusNode;
+  TextEditingController? supportEmailIDTextController;
+  String? Function(BuildContext, String?)?
+      supportEmailIDTextControllerValidator;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController3;
   // State field(s) for instruction widget.
   FocusNode? instructionFocusNode;
   TextEditingController? instructionTextController;
   String? Function(BuildContext, String?)? instructionTextControllerValidator;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
-
   // State field(s) for question2 widget.
   FocusNode? question2FocusNode;
   TextEditingController? question2TextController;
@@ -87,11 +88,6 @@ class ChatbotInstructionsModel
   FocusNode? question3FocusNode;
   TextEditingController? question3TextController;
   String? Function(BuildContext, String?)? question3TextControllerValidator;
-  // State field(s) for Switch widget.
-  bool? switchValue;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues;
-  FormFieldController<List<String>>? checkboxGroupValueController;
 
   @override
   void initState(BuildContext context) {
@@ -102,7 +98,6 @@ class ChatbotInstructionsModel
   void dispose() {
     unfocusNode.dispose();
     sideNavModel.dispose();
-    tabBarController?.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();
 
@@ -112,11 +107,8 @@ class ChatbotInstructionsModel
     textFieldFocusNode3?.dispose();
     textController3?.dispose();
 
-    textFieldFocusNode4?.dispose();
-    textController4?.dispose();
-
-    textFieldFocusNode5?.dispose();
-    textController5?.dispose();
+    supportEmailIDFocusNode?.dispose();
+    supportEmailIDTextController?.dispose();
 
     instructionFocusNode?.dispose();
     instructionTextController?.dispose();
@@ -130,4 +122,9 @@ class ChatbotInstructionsModel
     question3FocusNode?.dispose();
     question3TextController?.dispose();
   }
+
+  /// Additional helper methods.
+  String? get radioButtonValue1 => radioButtonValueController1?.value;
+  String? get radioButtonValue2 => radioButtonValueController2?.value;
+  String? get radioButtonValue3 => radioButtonValueController3?.value;
 }

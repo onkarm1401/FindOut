@@ -18,8 +18,11 @@ class ContentStruct extends FFFirebaseStruct {
   TextStruct? _text;
   TextStruct get text => _text ?? TextStruct();
   set text(TextStruct? val) => _text = val;
-  void updateText(Function(TextStruct) updateFn) =>
-      updateFn(_text ??= TextStruct());
+
+  void updateText(Function(TextStruct) updateFn) {
+    updateFn(_text ??= TextStruct());
+  }
+
   bool hasText() => _text != null;
 
   static ContentStruct fromMap(Map<String, dynamic> data) => ContentStruct(

@@ -8,13 +8,6 @@ service cloud.firestore {
       allow delete: if true;
     }
 
-    match /chatbot_perfomance/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if true;
-      allow delete: if true;
-    }
-
     match /chatHistory/{document} {
       allow create: if true;
       allow read: if true;
@@ -30,6 +23,13 @@ service cloud.firestore {
     }
 
     match /reported_issue/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /messages/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if true;

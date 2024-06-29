@@ -287,7 +287,7 @@ class FirebaseAuthManager extends AuthManager
       }
       return userCredential == null
           ? null
-          : ChatBotFirebaseUser.fromUserCredential(userCredential);
+          : CustomizedChatbotFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
       final errorMsg = switch (e.code) {
         'email-already-in-use' =>

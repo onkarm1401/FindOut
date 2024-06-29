@@ -10,19 +10,10 @@ class NewRegistrationModel extends FlutterFlowModel<NewRegistrationWidget> {
   FocusNode? usernameFocusNode;
   TextEditingController? usernameTextController;
   String? Function(BuildContext, String?)? usernameTextControllerValidator;
-  // State field(s) for company_name widget.
-  FocusNode? companyNameFocusNode;
-  TextEditingController? companyNameTextController;
-  String? Function(BuildContext, String?)? companyNameTextControllerValidator;
   // State field(s) for company_email widget.
   FocusNode? companyEmailFocusNode;
   TextEditingController? companyEmailTextController;
   String? Function(BuildContext, String?)? companyEmailTextControllerValidator;
-  // State field(s) for company_contact_number widget.
-  FocusNode? companyContactNumberFocusNode;
-  TextEditingController? companyContactNumberTextController;
-  String? Function(BuildContext, String?)?
-      companyContactNumberTextControllerValidator;
   // State field(s) for reason_for_aaccount widget.
   FocusNode? reasonForAaccountFocusNode;
   TextEditingController? reasonForAaccountTextController;
@@ -52,14 +43,8 @@ class NewRegistrationModel extends FlutterFlowModel<NewRegistrationWidget> {
     usernameFocusNode?.dispose();
     usernameTextController?.dispose();
 
-    companyNameFocusNode?.dispose();
-    companyNameTextController?.dispose();
-
     companyEmailFocusNode?.dispose();
     companyEmailTextController?.dispose();
-
-    companyContactNumberFocusNode?.dispose();
-    companyContactNumberTextController?.dispose();
 
     reasonForAaccountFocusNode?.dispose();
     reasonForAaccountTextController?.dispose();

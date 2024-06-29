@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class ChatBotFirebaseUser extends BaseAuthUser {
-  ChatBotFirebaseUser(this.user);
+class CustomizedChatbotFirebaseUser extends BaseAuthUser {
+  CustomizedChatbotFirebaseUser(this.user);
   User? user;
   @override
   bool get loggedIn => user != null;
@@ -54,17 +54,19 @@ class ChatBotFirebaseUser extends BaseAuthUser {
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
-  static BaseAuthUser fromFirebaseUser(User? user) => ChatBotFirebaseUser(user);
+  static BaseAuthUser fromFirebaseUser(User? user) =>
+      CustomizedChatbotFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> chatBotFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> customizedChatbotFirebaseUserStream() =>
+    FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = ChatBotFirebaseUser(user);
+        currentUser = CustomizedChatbotFirebaseUser(user);
         return currentUser!;
       },
     );

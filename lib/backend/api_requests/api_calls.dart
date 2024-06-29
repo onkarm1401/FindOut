@@ -33,16 +33,36 @@ class OpenAIAssistentGroup {
       DeleteFileToAssistentCall();
   static GetAssistentDetailsCall getAssistentDetailsCall =
       GetAssistentDetailsCall();
+  static GetThreadCall getThreadCall = GetThreadCall();
+  static DeleteThreadCall deleteThreadCall = DeleteThreadCall();
 }
 
 class CreateThreadCall {
   Future<ApiCallResponse> call({
+    String? vectorStoreIds = '',
+    String? instructions = '',
     String? token = '',
   }) async {
     final baseUrl = OpenAIAssistentGroup.getBaseUrl(
       token: token,
     );
 
+    final ffApiRequestBody = '''
+{
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "$instructions"
+    }
+  ],
+  "tool_resources": {
+    "file_search": {
+      "vector_store_ids": [
+        "$vectorStoreIds"
+      ]
+    }
+  }
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'createThread',
       apiUrl: '$baseUrl/threads',
@@ -52,11 +72,13 @@ class CreateThreadCall {
         'OpenAI-Beta': 'assistants=v2',
       },
       params: {},
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -97,6 +119,7 @@ class CreateMessageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -106,6 +129,8 @@ class CreateRunCall {
   Future<ApiCallResponse> call({
     String? threadId = '',
     String? assistantId = '',
+    String? instructions = '',
+    int? maxCompletionTokens,
     String? token = '',
   }) async {
     final baseUrl = OpenAIAssistentGroup.getBaseUrl(
@@ -114,7 +139,10 @@ class CreateRunCall {
 
     final ffApiRequestBody = '''
 {
-  "assistant_id": "$assistantId"
+  "assistant_id": "$assistantId",
+  "instructions": "$instructions",
+  "additional_instructions": "$instructions",
+  "max_completion_tokens": $maxCompletionTokens
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'createRun',
@@ -131,6 +159,7 @@ class CreateRunCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -164,6 +193,7 @@ class RetriveRunCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -210,6 +240,7 @@ class MessageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -251,6 +282,7 @@ class FileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -299,6 +331,7 @@ class CreateAssistentCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -315,6 +348,7 @@ class AddFileToAssistentCall {
     String? instructions = '',
     String? chatbotName = '',
     String? vectorStoreIds = '',
+    String? model = '',
     String? token = '',
   }) async {
     final baseUrl = OpenAIAssistentGroup.getBaseUrl(
@@ -323,7 +357,7 @@ class AddFileToAssistentCall {
 
     final ffApiRequestBody = '''
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$model",
   "tools": [
     {
       "type": "file_search"
@@ -360,6 +394,7 @@ class AddFileToAssistentCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -408,6 +443,7 @@ class DeleteFileToAssistentCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -435,6 +471,7 @@ class GetAssistentDetailsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -448,6 +485,83 @@ class GetAssistentDetailsCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+  String? instructions(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.instructions''',
+      ));
+  String? model(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.model''',
+      ));
+}
+
+class GetThreadCall {
+  Future<ApiCallResponse> call({
+    String? threadId = '',
+    String? token = '',
+  }) async {
+    final baseUrl = OpenAIAssistentGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getThread',
+      apiUrl: '$baseUrl/threads/$threadId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'OpenAI-Beta': 'assistants=v2',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class DeleteThreadCall {
+  Future<ApiCallResponse> call({
+    String? threadId = '',
+    String? token = '',
+  }) async {
+    final baseUrl = OpenAIAssistentGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteThread',
+      apiUrl: '$baseUrl/threads/$threadId',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'OpenAI-Beta': 'assistants=v2',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? id(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.id''',
+      ));
+  String? object(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.object''',
+      ));
+  bool? deleted(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.deleted''',
+      ));
 }
 
 /// End openAI Assistent Group Code
@@ -469,6 +583,8 @@ class VectorStorageGroup {
   static LinkUploadedFileToVectorStorageCall
       linkUploadedFileToVectorStorageCall =
       LinkUploadedFileToVectorStorageCall();
+  static LinkFileToVectorNEWCall linkFileToVectorNEWCall =
+      LinkFileToVectorNEWCall();
   static RenameVectorStorageCall renameVectorStorageCall =
       RenameVectorStorageCall();
   static DeleteVectorStorageCall deleteVectorStorageCall =
@@ -504,6 +620,7 @@ class DeleteStorageFileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -531,6 +648,7 @@ class CreateVectorStorageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -572,6 +690,44 @@ class LinkUploadedFileToVectorStorageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class LinkFileToVectorNEWCall {
+  Future<ApiCallResponse> call({
+    String? vectorStorageId = '',
+    String? fileId = '',
+    String? token = '',
+  }) async {
+    final baseUrl = VectorStorageGroup.getBaseUrl(
+      token: token,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "file_ids": [
+    "$fileId"
+  ]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'linkFileToVectorNEW',
+      apiUrl: '$baseUrl/vector_stores/$vectorStorageId/file_batches',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'OpenAI-Beta': 'assistants=v2',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -606,6 +762,7 @@ class RenameVectorStorageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -633,6 +790,7 @@ class DeleteVectorStorageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -661,6 +819,7 @@ class DeleteVectorStoreFileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -688,6 +847,7 @@ class ListOfUploadedFileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -736,6 +896,7 @@ class FilenameUploadedFileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -780,6 +941,7 @@ class UploadFileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -815,6 +977,7 @@ class GenerateAndUploadFileCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -835,8 +998,8 @@ class GenerateAndUploadFileCall {
 
 class OpenAICall {
   static Future<ApiCallResponse> call({
-    String? textOptimizationInstructions = '',
-    String? inputDate = '',
+    String? instructions = '',
+    String? inputData = '',
     String? token = '',
   }) async {
     final ffApiRequestBody = '''
@@ -845,11 +1008,11 @@ class OpenAICall {
   "messages": [
     {
       "role": "system",
-      "content": "$textOptimizationInstructions"
+      "content": "$instructions"
     },
     {
       "role": "user",
-      "content": "$inputDate"
+      "content": "$inputData"
     }
   ]
 }''';
@@ -868,6 +1031,7 @@ class OpenAICall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -911,6 +1075,7 @@ class FetchUniqueLinksCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -960,6 +1125,7 @@ class FetchDataCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -969,102 +1135,6 @@ class FetchDataCall {
         response,
         r'''$.formatted_data''',
       ));
-}
-
-class CreatePaymentOrderCall {
-  static Future<ApiCallResponse> call({
-    String? orderId = '',
-    double? orderAmount,
-    String? orderCurrency = '',
-    String? customerId = '',
-    String? customerEmail = '',
-    String? customerPhone = '',
-    String? customerName = '',
-    String? customerBankAccountNumber = '',
-    String? customerBankIfsc = '',
-    int? customerBankCode,
-    String? customerUid = '',
-  }) async {
-    final ffApiRequestBody = '''
-{
-  "customer_details": {
-    "customer_id": "$customerId",
-    "customer_email": "$customerEmail",
-    "customer_phone": "$customerPhone",
-    "customer_name": "$customerName",
-    "customer_bank_account_number": "$customerBankAccountNumber",
-    "customer_bank_ifsc": "$customerBankIfsc",
-    "customer_bank_code": $customerBankCode,
-    "customer_uid": "$customerUid"
-  },
-  "order_id": "$orderId",
-  "order_amount": $orderAmount,
-  "order_currency": "$orderCurrency"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'create payment order',
-      apiUrl: 'https://sandbox.cashfree.com/pg/orders',
-      callType: ApiCallType.POST,
-      headers: {
-        'accept': 'application/json',
-        'content-type': 'application/json',
-        'x-api-version': '2023-08-01',
-        'x-client-id': 'TEST101939721d32948958acc003e45627939101',
-        'x-client-secret':
-            'cfsk_ma_test_9133f2f5ad1dbe5f5c479bbf39a9c776_c76de864',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
-    );
-  }
-}
-
-class QRCodeCall {
-  static Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'QR code',
-      apiUrl:
-          'https://cac-api.cashfree.com/cac/v1/createDynamicQRCode?virtualVpaId=john&amount=50',
-      callType: ApiCallType.GET,
-      headers: {
-        'Authorization': 'Bearer TEST101939721d32948958acc003e45627939101',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
-    );
-  }
-}
-
-class AuthorizeCall {
-  static Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'authorize',
-      apiUrl: 'https://cac-gamma.cashfree.com/cac/v1/authorize',
-      callType: ApiCallType.POST,
-      headers: {
-        'X-Client-ID': 'TEST101939721d32948958acc003e45627939101',
-        'X-Client-Secret':
-            'cfsk_ma_test_9133f2f5ad1dbe5f5c479bbf39a9c776_c76de864',
-      },
-      params: {},
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
-    );
-  }
 }
 
 class ApiPagingParams {
@@ -1083,10 +1153,17 @@ class ApiPagingParams {
       'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
 }
 
+String _toEncodable(dynamic item) {
+  if (item is DocumentReference) {
+    return item.path;
+  }
+  return item;
+}
+
 String _serializeList(List? list) {
   list ??= <String>[];
   try {
-    return json.encode(list);
+    return json.encode(list, toEncodable: _toEncodable);
   } catch (_) {
     if (kDebugMode) {
       print("List serialization failed. Returning empty list.");
@@ -1098,7 +1175,7 @@ String _serializeList(List? list) {
 String _serializeJson(dynamic jsonVar, [bool isList = false]) {
   jsonVar ??= (isList ? [] : {});
   try {
-    return json.encode(jsonVar);
+    return json.encode(jsonVar, toEncodable: _toEncodable);
   } catch (_) {
     if (kDebugMode) {
       print("Json serialization failed. Returning empty json.");

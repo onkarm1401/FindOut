@@ -13,52 +13,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-String? convertStringListToString(List<String>? inputData) {
-  // Generate a function that returns only the data of the `data` variable
-  if (inputData == null || inputData.isEmpty) {
+String? convertStringListToString(List<String>? input) {
+  // cnvert string list to string
+  if (input == null || input.isEmpty) {
     return null;
   }
-
-  // Join the strings with single space as separator and trim extra spaces
-  return inputData.join(' ').replaceAll(RegExp(r'\s+'), ' ');
+  return input.join(', ');
 }
 
 String convertToOneline(String input) {
   // write function to convert input string to oneline data format
-  String onelineData = input.replaceAll(RegExp(r'\s+'), ' ');
+  String onelineData = input
+      .replaceAllMapped(RegExp(r'[^a-zA-Z0-9.]'), (match) => ' ')
+      .trim()
+      .replaceAll(RegExp(r'\s+'), ' ');
 
   // return oneline data
   return onelineData;
-}
-
-String? newCustomFunction(
-  String? inputKey,
-  String? url,
-) {
-  // Function to generate random token
-  String generateRandomToken() {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    final random = math.Random();
-    return List.generate(32, (index) => chars[random.nextInt(chars.length)])
-        .join();
-  }
-
-  // Function to construct URL with token
-  String constructUrlWithToken(String token, String inputKey, String url) {
-    final encodedToken = Uri.encodeComponent(token);
-    final encodedKey = Uri.encodeComponent(inputKey);
-    final encodedUrl = Uri.encodeComponent(url);
-    return '$url?key=$encodedKey&token=$encodedToken';
-  }
-
-  // Generate a random token
-  String token = generateRandomToken();
-
-  // Construct URL with token
-  if (inputKey == null || url == null) {
-    return null;
-  }
-  return constructUrlWithToken(token, inputKey, url);
 }
 
 dynamic saveChatHistory(
@@ -105,4 +76,41 @@ List<String>? stringToStringList(
     list.add(q3);
   }
   return list.isEmpty ? null : list;
+}
+
+DateTime? expiryDateGenerator(int? days) {
+  // add input days in todays date and return date
+  DateTime today = DateTime.now();
+  if (days != null) {
+    return today.add(Duration(days: days));
+  } else {
+    return null;
+  }
+}
+
+DateTime? firstDate() {
+  // write code to generate first date-time of current month
+  return DateTime(DateTime.now().year, DateTime.now().month, 1);
+}
+
+String? convertJSONtoString(dynamic input) {
+  // convert json format to string format
+  return json.encode(input);
+}
+
+String? generateJSONReturnString(dynamic json) {
+  // generate JSON convert TO String
+  try {
+    final jsonString = jsonEncode(json);
+    return jsonString;
+  } catch (e) {
+    print('Error generating JSON string: $e');
+    return null;
+  }
+}
+
+String? jsonToString(String? ip) {
+  // write code to replace ('"', '\\"') for all places
+  if (ip == null) return null;
+  return ip.replaceAll('"', '\\"');
 }

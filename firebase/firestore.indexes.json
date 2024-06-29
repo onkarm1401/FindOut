@@ -9,8 +9,30 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "starred",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "chatDate",
           "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "messages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "uniqueID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "ASCENDING"
         }
       ]
     }

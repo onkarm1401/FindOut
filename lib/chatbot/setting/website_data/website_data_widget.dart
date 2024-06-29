@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'website_data_model.dart';
 export 'website_data_model.dart';
 
@@ -58,12 +59,16 @@ class _WebsiteDataWidgetState extends State<WebsiteDataWidget> {
             obscureText: false,
             decoration: InputDecoration(
               labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                    fontFamily: 'Readex Pro',
+                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                     letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).labelMediumFamily),
                   ),
               hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                    fontFamily: 'Readex Pro',
+                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                     letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).labelMediumFamily),
                   ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
@@ -97,8 +102,10 @@ class _WebsiteDataWidgetState extends State<WebsiteDataWidget> {
               fillColor: FlutterFlowTheme.of(context).info,
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Readex Pro',
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                   letterSpacing: 0.0,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).bodyMediumFamily),
                 ),
             maxLines: null,
             validator: _model.textControllerValidator.asValidator(context),

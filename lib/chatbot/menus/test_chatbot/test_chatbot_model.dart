@@ -5,6 +5,7 @@ import '/chatbot/component/side_nav/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'test_chatbot_widget.dart' show TestChatbotWidget;
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class TestChatbotModel extends FlutterFlowModel<TestChatbotWidget> {
   ///  Local state fields for this page.
@@ -37,42 +38,42 @@ class TestChatbotModel extends FlutterFlowModel<TestChatbotWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (createThread)] action in testChatbot widget.
+  // Stores action output result for [Backend Call - API (getAssistentDetails)] action in test-chatbot widget.
+  ApiCallResponse? getAsistent;
+  // Stores action output result for [Backend Call - API (createThread)] action in test-chatbot widget.
   ApiCallResponse? apiThreadResult;
+  AudioPlayer? soundPlayer1;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
   // State field(s) for ListView widget.
-  ScrollController? listViewController1;
+  ScrollController? listViewController;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Backend Call - API (createMessage)] action in Button widget.
   ApiCallResponse? createMessageResponse;
+  AudioPlayer? soundPlayer2;
   // Stores action output result for [Backend Call - API (createRun)] action in Button widget.
   ApiCallResponse? createRunResponse;
   // Stores action output result for [Backend Call - API (retriveRun)] action in Button widget.
   ApiCallResponse? runRetriveResponse;
   // Stores action output result for [Backend Call - API (message)] action in Button widget.
   ApiCallResponse? aiResponseForMessage;
-  // State field(s) for ListView widget.
-  ScrollController? listViewController2;
+  AudioPlayer? soundPlayer3;
 
   @override
   void initState(BuildContext context) {
     sideNavModel = createModel(context, () => SideNavModel());
-    listViewController1 = ScrollController();
-    listViewController2 = ScrollController();
+    listViewController = ScrollController();
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     sideNavModel.dispose();
-    listViewController1?.dispose();
+    listViewController?.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
-
-    listViewController2?.dispose();
   }
 }

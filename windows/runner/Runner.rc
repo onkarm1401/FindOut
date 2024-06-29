@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "chatBot" "\0"
+            VALUE "CompanyName", "customized-chatbot" "\0"
             VALUE "FileDescription", "A new Flutter project." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "chatBot" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 chatBot. All rights reserved." "\0"
-            VALUE "OriginalFilename", "chat_bot.exe" "\0"
-            VALUE "ProductName", "chatBot" "\0"
+            VALUE "InternalName", "customized-chatbot" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 customized-chatbot. All rights reserved." "\0"
+            VALUE "OriginalFilename", "customized_chatbot.exe" "\0"
+            VALUE "ProductName", "customized-chatbot" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -17,6 +17,7 @@ class TextStruct extends FFFirebaseStruct {
   String? _value;
   String get value => _value ?? '';
   set value(String? val) => _value = val;
+
   bool hasValue() => _value != null;
 
   static TextStruct fromMap(Map<String, dynamic> data) => TextStruct(

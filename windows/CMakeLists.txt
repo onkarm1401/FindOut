@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(chat_bot LANGUAGES CXX)
+project(customized_chatbot LANGUAGES CXX)
 
-set(BINARY_NAME "chat_bot")
+set(BINARY_NAME "customized_chatbot")
 
 cmake_policy(SET CMP0063 NEW)
 

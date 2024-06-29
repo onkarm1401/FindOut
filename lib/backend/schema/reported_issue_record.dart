@@ -40,6 +40,11 @@ class ReportedIssueRecord extends FirestoreRecord {
   DateTime? get reporterDate => _reporterDate;
   bool hasReporterDate() => _reporterDate != null;
 
+  // "screenshot" field.
+  String? _screenshot;
+  String get screenshot => _screenshot ?? '';
+  bool hasScreenshot() => _screenshot != null;
+
   void _initializeFields() {
     _userID = snapshotData['userID'] as String?;
     _reportedProblem = snapshotData['reported_problem'] as String?;
@@ -47,6 +52,7 @@ class ReportedIssueRecord extends FirestoreRecord {
     _reporterPhoneNumber =
         castToType<int>(snapshotData['reporter_phone_number']);
     _reporterDate = snapshotData['reporter_date'] as DateTime?;
+    _screenshot = snapshotData['screenshot'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -89,6 +95,7 @@ Map<String, dynamic> createReportedIssueRecordData({
   String? reporterEmail,
   int? reporterPhoneNumber,
   DateTime? reporterDate,
+  String? screenshot,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -97,6 +104,7 @@ Map<String, dynamic> createReportedIssueRecordData({
       'reporter_email': reporterEmail,
       'reporter_phone_number': reporterPhoneNumber,
       'reporter_date': reporterDate,
+      'screenshot': screenshot,
     }.withoutNulls,
   );
 
@@ -113,7 +121,8 @@ class ReportedIssueRecordDocumentEquality
         e1?.reportedProblem == e2?.reportedProblem &&
         e1?.reporterEmail == e2?.reporterEmail &&
         e1?.reporterPhoneNumber == e2?.reporterPhoneNumber &&
-        e1?.reporterDate == e2?.reporterDate;
+        e1?.reporterDate == e2?.reporterDate &&
+        e1?.screenshot == e2?.screenshot;
   }
 
   @override
@@ -122,7 +131,8 @@ class ReportedIssueRecordDocumentEquality
         e?.reportedProblem,
         e?.reporterEmail,
         e?.reporterPhoneNumber,
-        e?.reporterDate
+        e?.reporterDate,
+        e?.screenshot
       ]);
 
   @override

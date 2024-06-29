@@ -28,9 +28,38 @@ class DesignUIModel extends FlutterFlowModel<DesignUIWidget> {
   Color? colorPicked7;
   Color? colorPicked8;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  FocusNode? textFieldFocusNode1;
+  TextEditingController? textController1;
+  String? Function(BuildContext, String?)? textController1Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode3;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode4;
+  TextEditingController? textController4;
+  String? Function(BuildContext, String?)? textController4Validator;
+  // State field(s) for ChatbotTitle widget.
+  FocusNode? chatbotTitleFocusNode;
+  TextEditingController? chatbotTitleTextController;
+  String? Function(BuildContext, String?)? chatbotTitleTextControllerValidator;
+  // State field(s) for ChatbotSub-Title widget.
+  FocusNode? chatbotSubTitleFocusNode;
+  TextEditingController? chatbotSubTitleTextController;
+  String? Function(BuildContext, String?)?
+      chatbotSubTitleTextControllerValidator;
+  // State field(s) for Placeholder widget.
+  FocusNode? placeholderFocusNode;
+  TextEditingController? placeholderTextController;
+  String? Function(BuildContext, String?)? placeholderTextControllerValidator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode5;
+  TextEditingController? textController8;
+  String? Function(BuildContext, String?)? textController8Validator;
 
   @override
   void initState(BuildContext context) {
@@ -41,7 +70,28 @@ class DesignUIModel extends FlutterFlowModel<DesignUIWidget> {
   void dispose() {
     unfocusNode.dispose();
     sideNavModel.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    textFieldFocusNode1?.dispose();
+    textController1?.dispose();
+
+    textFieldFocusNode2?.dispose();
+    textController2?.dispose();
+
+    textFieldFocusNode3?.dispose();
+    textController3?.dispose();
+
+    textFieldFocusNode4?.dispose();
+    textController4?.dispose();
+
+    chatbotTitleFocusNode?.dispose();
+    chatbotTitleTextController?.dispose();
+
+    chatbotSubTitleFocusNode?.dispose();
+    chatbotSubTitleTextController?.dispose();
+
+    placeholderFocusNode?.dispose();
+    placeholderTextController?.dispose();
+
+    textFieldFocusNode5?.dispose();
+    textController8?.dispose();
   }
 }
