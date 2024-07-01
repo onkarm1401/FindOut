@@ -61,6 +61,7 @@ class _NewRegistrationWidgetState extends State<NewRegistrationWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
               child: Row(
@@ -96,7 +97,7 @@ class _NewRegistrationWidgetState extends State<NewRegistrationWidget> {
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: MediaQuery.sizeOf(context).height * 1.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
                       child: Align(
                         alignment: const AlignmentDirectional(0.0, 0.0),
@@ -245,7 +246,7 @@ class _NewRegistrationWidgetState extends State<NewRegistrationWidget> {
                                       ),
                                       filled: true,
                                       fillColor: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -325,7 +326,7 @@ class _NewRegistrationWidgetState extends State<NewRegistrationWidget> {
                                       ),
                                       filled: true,
                                       fillColor: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -407,7 +408,7 @@ class _NewRegistrationWidgetState extends State<NewRegistrationWidget> {
                                       ),
                                       filled: true,
                                       fillColor: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -480,7 +481,7 @@ class _NewRegistrationWidgetState extends State<NewRegistrationWidget> {
                                     ),
                                     filled: true,
                                     fillColor: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                        .secondaryBackground,
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
                                         () => _model.passwordVisibility =
@@ -566,7 +567,7 @@ class _NewRegistrationWidgetState extends State<NewRegistrationWidget> {
                                     ),
                                     filled: true,
                                     fillColor: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                        .secondaryBackground,
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
                                         () => _model.confirmPasswordVisibility =

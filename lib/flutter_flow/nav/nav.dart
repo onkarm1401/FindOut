@@ -87,7 +87,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'test-chatbot',
-          path: '/test-chatbot',
+          path: '/playground',
           requireAuth: true,
           builder: (context, params) => const TestChatbotWidget(),
         ),

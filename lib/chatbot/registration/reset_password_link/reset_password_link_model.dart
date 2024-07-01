@@ -7,9 +7,13 @@ class ResetPasswordLinkModel extends FlutterFlowModel<ResetPasswordLinkWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for EmailAddress widget.
-  FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressTextController;
-  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  FocusNode? emailAddressFocusNode1;
+  TextEditingController? emailAddressTextController1;
+  String? Function(BuildContext, String?)? emailAddressTextController1Validator;
+  // State field(s) for EmailAddress widget.
+  FocusNode? emailAddressFocusNode2;
+  TextEditingController? emailAddressTextController2;
+  String? Function(BuildContext, String?)? emailAddressTextController2Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -17,7 +21,10 @@ class ResetPasswordLinkModel extends FlutterFlowModel<ResetPasswordLinkWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    emailAddressFocusNode?.dispose();
-    emailAddressTextController?.dispose();
+    emailAddressFocusNode1?.dispose();
+    emailAddressTextController1?.dispose();
+
+    emailAddressFocusNode2?.dispose();
+    emailAddressTextController2?.dispose();
   }
 }

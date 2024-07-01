@@ -352,7 +352,7 @@ class _RealTimeNewWidgetState extends State<RealTimeNewWidget>
                       if (_model.chatRecord?.expertJoined == false)
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 12.0, 4.0),
+                              0.0, 4.0, 12.0, 4.0),
                           child: Container(
                             height: MediaQuery.sizeOf(context).height * 0.04,
                             decoration: BoxDecoration(
@@ -584,9 +584,6 @@ class _RealTimeNewWidgetState extends State<RealTimeNewWidget>
                                                                         Container(
                                                                       constraints:
                                                                           BoxConstraints(
-                                                                        minWidth:
-                                                                            MediaQuery.sizeOf(context).width *
-                                                                                0.35,
                                                                         minHeight:
                                                                             MediaQuery.sizeOf(context).height *
                                                                                 0.06,
@@ -1033,7 +1030,7 @@ class _RealTimeNewWidgetState extends State<RealTimeNewWidget>
                                                                                       color: FlutterFlowTheme.of(context).alternate,
                                                                                       width: 1.0,
                                                                                     ),
-                                                                                    borderRadius: BorderRadius.circular(12.0),
+                                                                                    borderRadius: BorderRadius.circular(24.0),
                                                                                   ),
                                                                                 ),
                                                                               );
@@ -1071,13 +1068,15 @@ class _RealTimeNewWidgetState extends State<RealTimeNewWidget>
                                                               alignment:
                                                                   const AlignmentDirectional(
                                                                       1.0, 0.0),
-                                                              child: Container(
+                                                              child:
+                                                                  AnimatedContainer(
+                                                                duration: const Duration(
+                                                                    milliseconds:
+                                                                        390),
+                                                                curve: Curves
+                                                                    .linear,
                                                                 constraints:
                                                                     BoxConstraints(
-                                                                  minWidth:
-                                                                      MediaQuery.sizeOf(context)
-                                                                              .width *
-                                                                          0.35,
                                                                   minHeight:
                                                                       MediaQuery.sizeOf(context)
                                                                               .height *
@@ -1085,7 +1084,7 @@ class _RealTimeNewWidgetState extends State<RealTimeNewWidget>
                                                                   maxWidth:
                                                                       MediaQuery.sizeOf(context)
                                                                               .width *
-                                                                          0.65,
+                                                                          0.75,
                                                                 ),
                                                                 decoration:
                                                                     BoxDecoration(
@@ -2109,7 +2108,7 @@ class _RealTimeNewWidgetState extends State<RealTimeNewWidget>
                                                         ),
                                               ),
                                               TextSpan(
-                                                text: ' - OM Chatbot',
+                                                text: ' - Botto',
                                                 style: TextStyle(
                                                   color: valueOrDefault<Color>(
                                                     currentUserDocument

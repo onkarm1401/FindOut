@@ -184,7 +184,7 @@ class _TestChatbotWidgetState extends State<TestChatbotWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'test-chatbot',
+        title: 'playground',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -200,12 +200,42 @@ class _TestChatbotWidgetState extends State<TestChatbotWidget>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  wrapWithModel(
-                    model: _model.sideNavModel,
-                    updateCallback: () => setState(() {}),
-                    updateOnChange: true,
-                    child: const SideNavWidget(
-                      selectedNav: 7,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      _model.apiResulttfx =
+                          await OpenAIAssistentGroup.deleteThreadCall.call(
+                        threadId: _model.threadId,
+                        token: getRemoteConfigString('openAI_key'),
+                      );
+
+                      if (!(_model.apiResulttfx?.succeeded ?? true)) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Failed to delete message thread',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor: FlutterFlowTheme.of(context).error,
+                          ),
+                        );
+                      }
+
+                      setState(() {});
+                    },
+                    child: wrapWithModel(
+                      model: _model.sideNavModel,
+                      updateCallback: () => setState(() {}),
+                      updateOnChange: true,
+                      child: const SideNavWidget(
+                        selectedNav: 7,
+                      ),
                     ),
                   ),
                   Flexible(

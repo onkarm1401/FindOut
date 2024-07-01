@@ -13,18 +13,22 @@ class ChatbotIntegrationWithWebsiteModel
   // Model for sideNav component.
   late SideNavModel sideNavModel;
   // Model for websiteData component.
-  late WebsiteDataModel websiteDataModel;
+  late WebsiteDataModel websiteDataModel1;
+  // Model for websiteData component.
+  late WebsiteDataModel websiteDataModel2;
 
   @override
   void initState(BuildContext context) {
     sideNavModel = createModel(context, () => SideNavModel());
-    websiteDataModel = createModel(context, () => WebsiteDataModel());
+    websiteDataModel1 = createModel(context, () => WebsiteDataModel());
+    websiteDataModel2 = createModel(context, () => WebsiteDataModel());
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     sideNavModel.dispose();
-    websiteDataModel.dispose();
+    websiteDataModel1.dispose();
+    websiteDataModel2.dispose();
   }
 }

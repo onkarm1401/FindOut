@@ -45,6 +45,8 @@ class TestChatbotModel extends FlutterFlowModel<TestChatbotWidget> {
   AudioPlayer? soundPlayer1;
   // Model for sideNav component.
   late SideNavModel sideNavModel;
+  // Stores action output result for [Backend Call - API (deleteThread)] action in sideNav widget.
+  ApiCallResponse? apiResulttfx;
   // State field(s) for ListView widget.
   ScrollController? listViewController;
   // State field(s) for TextField widget.

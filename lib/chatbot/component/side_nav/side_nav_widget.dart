@@ -110,7 +110,7 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                                 ),
                               ),
                               Text(
-                                'Chatbot.AI',
+                                'Botto',
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
@@ -1184,7 +1184,7 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Integration With Website',
+                                                    'Website Integration',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1482,7 +1482,7 @@ class _SideNavWidgetState extends State<SideNavWidget> {
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'troubleshoot',
+                                                  'Troubleshoot',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

@@ -29,7 +29,7 @@ class _BillingWidgetState extends State<BillingWidget>
 
     _model.tabBarController = TabController(
       vsync: this,
-      length: 4,
+      length: 2,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -932,23 +932,12 @@ class _BillingWidgetState extends State<BillingWidget>
                                               text: 'Overview',
                                             ),
                                             Tab(
-                                              text: 'Payment Methods',
-                                            ),
-                                            Tab(
-                                              text: 'Billing History',
-                                            ),
-                                            Tab(
                                               text: 'Feature',
                                             ),
                                           ],
                                           controller: _model.tabBarController,
                                           onTap: (i) async {
-                                            [
-                                              () async {},
-                                              () async {},
-                                              () async {},
-                                              () async {}
-                                            ][i]();
+                                            [() async {}, () async {}][i]();
                                           },
                                         ),
                                       ),
@@ -1284,8 +1273,6 @@ class _BillingWidgetState extends State<BillingWidget>
                                                     const SizedBox(height: 14.0)),
                                               ),
                                             ),
-                                            Container(),
-                                            Container(),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(

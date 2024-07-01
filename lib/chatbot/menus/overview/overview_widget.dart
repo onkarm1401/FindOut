@@ -753,7 +753,7 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                             BorderRadius.circular(12.0),
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .tertiary,
                                         ),
                                       ),
                                       child: Padding(
@@ -779,7 +779,7 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                                   .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primary,
+                                                              .tertiary,
                                                           fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -810,14 +810,12 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                           0.06,
                                                 ),
                                                 decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent3,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                  ),
                                                 ),
                                                 child: Padding(
                                                   padding: const EdgeInsetsDirectional
@@ -903,19 +901,12 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                                         .override(
                                                                           fontFamily:
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                          color:
-                                                                              valueOrDefault<Color>(
-                                                                            valueOrDefault(currentUserDocument?.openAIAssistentId, '') != ''
-                                                                                ? FlutterFlowTheme.of(context).success
-                                                                                : FlutterFlowTheme.of(context).error,
-                                                                            FlutterFlowTheme.of(context).error,
-                                                                          ),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
-                                                                              FontWeight.w500,
+                                                                              FontWeight.normal,
                                                                           useGoogleFonts:
                                                                               GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                         ),
@@ -996,15 +987,12 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                             0.06,
                                                   ),
                                                   decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent3,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                    ),
                                                   ),
                                                   child: Padding(
                                                     padding:
@@ -1066,20 +1054,12 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        color: valueOrDefault<
-                                                                            Color>(
-                                                                          currentUserDocument?.instructionLastUpadatedDate != null
-                                                                              ? FlutterFlowTheme.of(context).success
-                                                                              : FlutterFlowTheme.of(context).error,
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .error,
-                                                                        ),
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.w500,
+                                                                            FontWeight.normal,
                                                                         useGoogleFonts:
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                       ),
@@ -1164,15 +1144,12 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                             0.06,
                                                   ),
                                                   decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent3,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                    ),
                                                   ),
                                                   child: Padding(
                                                     padding:
@@ -1233,21 +1210,13 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
                                                                               .bodyMediumFamily,
-                                                                      color: valueOrDefault<
-                                                                          Color>(
-                                                                        valueOrDefault(currentUserDocument?.chatbotLogo, '') != ''
-                                                                            ? FlutterFlowTheme.of(context).success
-                                                                            : FlutterFlowTheme.of(context).error,
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .error,
-                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .w500,
+                                                                              .normal,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
@@ -1333,15 +1302,12 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                             0.06,
                                                   ),
                                                   decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent3,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                    ),
                                                   ),
                                                   child: Padding(
                                                     padding:
@@ -1402,21 +1368,13 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
                                                                               .bodyMediumFamily,
-                                                                      color: valueOrDefault<
-                                                                          Color>(
-                                                                        valueOrDefault(currentUserDocument?.userLogo, '') != ''
-                                                                            ? FlutterFlowTheme.of(context).success
-                                                                            : FlutterFlowTheme.of(context).error,
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .error,
-                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .w500,
+                                                                              .normal,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
@@ -1494,15 +1452,12 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                     minHeight: 6.0,
                                                   ),
                                                   decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent3,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                    ),
                                                   ),
                                                   child: Padding(
                                                     padding:
@@ -1562,22 +1517,13 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
                                                                               .bodyMediumFamily,
-                                                                      color: valueOrDefault<
-                                                                          Color>(
-                                                                        _model.setup ==
-                                                                                0
-                                                                            ? FlutterFlowTheme.of(context).error
-                                                                            : FlutterFlowTheme.of(context).success,
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .error,
-                                                                      ),
                                                                       fontSize:
                                                                           12.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .w500,
+                                                                              .normal,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
@@ -1633,6 +1579,253 @@ class _OverviewWidgetState extends State<OverviewWidget> {
                                     ),
                                   ),
                                 ),
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(14.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Manage your plan',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              fontSize: 22.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w500,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                1.0,
+                                        height: 100.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent2,
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(12.0),
+                                            bottomRight: Radius.circular(12.0),
+                                            topLeft: Radius.circular(12.0),
+                                            topRight: Radius.circular(12.0),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 12.0, 12.0, 12.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Text(
+                                                    'Plan Type',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  AuthUserStreamWidget(
+                                                    builder: (context) => Text(
+                                                      valueOrDefault<String>(
+                                                        valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.planType,
+                                                            ''),
+                                                        'Not Available',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontSize: 18.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Text(
+                                                    'Plan Active Date',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  AuthUserStreamWidget(
+                                                    builder: (context) => Text(
+                                                      dateTimeFormat(
+                                                        'yMMMd',
+                                                        currentUserDocument!
+                                                            .planActiviatedDate!,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                fontSize: 18.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Text(
+                                                    'Expiry Date',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  AuthUserStreamWidget(
+                                                    builder: (context) => Text(
+                                                      dateTimeFormat(
+                                                        'yMMMd',
+                                                        currentUserDocument!
+                                                            .planExpiryDate!,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                fontSize: 18.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ].divide(const SizedBox(height: 14.0)),
+                                  ),
+                                ),
+                              ),
                             ].divide(const SizedBox(height: 14.0)),
                           ),
                         ),

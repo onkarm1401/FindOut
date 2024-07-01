@@ -69,22 +69,93 @@ class _ChatbotIntegrationWithWebsiteWidgetState
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 18.0),
-                          child: Text(
-                            'Integration with Website',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  fontSize: 22.0,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                        Text(
+                          'Website Integration ',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontSize: 22.0,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
+                        ),
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 0.78,
+                          height: 100.0,
+                          constraints: BoxConstraints(
+                            minHeight: MediaQuery.sizeOf(context).height * 0.2,
+                          ),
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).alternate,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 12.0, 12.0, 12.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Text(
+                                    'Chat Widget',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
+                                  ),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Text(
+                                    'To add a chat widget to the bottom right of your website add this script tag to your html inside end of body tag',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.normal,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
+                                  ),
+                                ),
+                                wrapWithModel(
+                                  model: _model.websiteDataModel1,
+                                  updateCallback: () => setState(() {}),
+                                  updateOnChange: true,
+                                  child: WebsiteDataWidget(
+                                    parameter1:
+                                        '<script async src=\"https://chatbot1401.flutterflow.app/real-time-new?id=${currentUserReference?.id}\"></script>',
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Container(
@@ -111,6 +182,27 @@ class _ChatbotIntegrationWithWebsiteWidgetState
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: Text(
+                                    'Within a webpage',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Text(
                                     'To add a chat bot anywhere on your website page, add this script tag to the respective page inside end of body tag',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -129,19 +221,19 @@ class _ChatbotIntegrationWithWebsiteWidgetState
                                   ),
                                 ),
                                 wrapWithModel(
-                                  model: _model.websiteDataModel,
+                                  model: _model.websiteDataModel2,
                                   updateCallback: () => setState(() {}),
                                   updateOnChange: true,
                                   child: WebsiteDataWidget(
                                     parameter1:
-                                        '  <iframe src=\"https://chatbot1401.flutterflow.app/AI?id=${currentUserReference?.id}style=\"width: 100%; height: 100%; border: none;\"></iframe>',
+                                        '<script async src=\"https://chatbot1401.flutterflow.app/real-time-new?id=${currentUserReference?.id}\"></script>',
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                      ],
+                      ].divide(const SizedBox(height: 16.0)),
                     ),
                   ),
                 ],
